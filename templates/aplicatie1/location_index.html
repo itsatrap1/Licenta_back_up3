@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+    <style>
+        .add_button {
+            width: 10%;
+            background-color: yellow;
+            color: blue;
+            text-decoration: none;
+            border: 1px solid green;
+        }
+        .update_button {
+            width: 10%;
+            background-color: blue;
+            color: yellow;
+            text-decoration: none;
+            border: red;
+        }
+        table > thead > tr {
+            background-color: grey;
+        }
+        table > thead > tr > th {
+            width: 20%;
+        }
+    </style>
+    <br><br><br>
+    <a class="add_button" href="{% url 'aplicatie1:adaugare' %}">Add new location</a>
+    <table>
+        <thead>
+        <tr>
+            <th>Index</th>
+            <th>City</th>
+            <th>Country</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in location_list %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ item.city|upper }}</td>
+                <td>{{ item.country }}</td>
+                <td>
+                    <a class="update_button" href="{% url 'aplicatie1:modificare' item.id %}">Update location</a>
+                    <a class="remove_button" href="{% url 'aplicatie1:delete' item.id %}">Remove location</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

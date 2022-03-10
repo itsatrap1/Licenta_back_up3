@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+    <style>
+        .add_button {
+            width: 10%;
+            background-color: yellow;
+            color: blue;
+            text-decoration: none;
+            border: 1px solid green;
+        }
+        .update_button {
+            width: 10%;
+            background-color: blue;
+            color: yellow;
+            text-decoration: none;
+            border: red;
+        }
+        table > thead > tr {
+            background-color: grey;
+        }
+        table > thead > tr > th {
+            width: 20%;
+        }
+    </style>
+    <br><br><br>
+<a class="add_button" href="{% url 'aplicatie2:adaugare' %}">Add new company</a>
+    <table>
+        <thead>
+        <tr>
+            <th>Index</th>
+            <th>Resort Name</th>
+            <th>Website</th>
+            <th>Resort type</th>
+            <th>Location</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in companies_list %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ item.name|upper }}</td>
+                <td>{{ item.website }}</td>
+                <td>{{ item.company_type }}</td>
+                <td>{{ item.location }}</td>
+                <td><a class="update_button" href="{% url 'aplicatie2:modificare' item.id %}">Update resort</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
