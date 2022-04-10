@@ -37,8 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'aplicatie1',
     'aplicatie2',
-    # 'myapi',
-    # 'rest_framework',
+    'webscrapping',
+    'crispy_forms',
+    'signup',
+
+
 ]
 
 MIDDLEWARE = [
@@ -65,7 +68,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'proiect.context_processors.is_ready_to_work',
             ],
         },
     },
@@ -124,7 +126,12 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = '/location/'
+LOGIN_REDIRECT_URL = '/companies/index'
 LOGOUT_REDIRECT_URL = '/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+# Nice editing for forms
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"

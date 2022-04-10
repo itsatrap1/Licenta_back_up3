@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+
 {% block content %}
     <br>
     <br>
@@ -12,8 +13,12 @@
         <input type="password" name="password">
 
         <button type="submit" onclick="{% url 'login' %}">Login</button>
+
         {{ form.non_field_errors }}
-        <a href="{% url 'password_reset' %}">Vrei sa iti resetezi parola?</a>
+        <a href="{% url 'password_reset' %}">Reset your password?</a>
     </form>
+        <br>
+        <label>Don't have an account ?  </label>
+        <a href = "{% url 'signup' %}"> Sign Up </a>
     </div>
 {% endblock %}

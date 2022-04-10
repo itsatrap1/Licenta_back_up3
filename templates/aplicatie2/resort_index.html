@@ -23,25 +23,23 @@
         }
     </style>
     <br><br><br>
-<a class="add_button" href="{% url 'aplicatie2:adaugare' %}">Add new company</a>
+<a class="add_button" href="{% url 'aplicatie2:adaugare' %}">Add new resort</a>
     <table>
         <thead>
         <tr>
             <th>Index</th>
             <th>Resort Name</th>
-            <th>Website</th>
             <th>Resort type</th>
             <th>Location</th>
             <th>Action</th>
         </tr>
         </thead>
         <tbody>
-        {% for item in companies_list %}
+        {% for item in resorts_list %}
             <tr>
                 <td>{{ forloop.counter }}</td>
                 <td>{{ item.name|upper }}</td>
-                <td>{{ item.website }}</td>
-                <td>{{ item.company_type }}</td>
+                <td>{{ item.resort_type }}</td>
                 <td>{{ item.location }}</td>
                 <td><a class="update_button" href="{% url 'aplicatie2:modificare' item.id %}">Update resort</a></td>
             </tr>

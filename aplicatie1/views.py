@@ -51,7 +51,8 @@ class ListLocationView(LoginRequiredMixin, ListView):
     template_name = 'aplicatie1/location_index.html'
 
     def get_queryset(self):
-        return Location.objects.filter(active=1)
+        if self.request.user.is_superuser() is True:
+            return Location.objects.filter(active=1)
 
 
 @login_required

@@ -3,7 +3,7 @@
     <form method="POST">
         {% csrf_token %}
         {% for item in form %}
-            {{ item.label }} {{ item }}<br>
+            {{ item.label }} {{  item }}<br>
         <p style = "color: red"> {{ item.errors }} </p>
         {% endfor %}
     <button type="submit">Save</button>

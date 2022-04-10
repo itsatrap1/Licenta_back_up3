@@ -7,45 +7,33 @@ from django.contrib.auth.models import User
 from django.core.mail import EmailMultiAlternatives
 from django.http import HttpResponseRedirect
 from django.template.loader import render_to_string
-from django.urls import reverse
-from django.views.generic import ListView, CreateView, UpdateView
+from django.urls import reverse, reverse_lazy
+from django.views.generic import ListView, CreateView, UpdateView, TemplateView
 
-from aplicatie2.models import Pontaj, Companies, UserExtend
-from aplicatie2.forms import CompaniesForm, NewAccountForm
+from aplicatie2.models import Resorts  # , UserExtend  Pontaj,
+from aplicatie2.forms import ResortsForm, ProfileForm  # , ProfileForm  # , NewAccountForm
 import datetime
 
 
-@login_required
-def newPontaj(request):
-    Pontaj.objects.create(user_id=request.user.id, start_date=datetime.datetime.now())
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+class ListResortView(LoginRequiredMixin, ListView):
+    model = Resorts
+    template_name = 'aplicatie2/resort_index.html'
+
+    def get_queryset(self):
+        if self.request.user.is_superuser is True:
+            return self.model.objects.all()
+
+        return self.model
 
 
-@login_required
-def stopTimesheet(request):
-    Pontaj.objects.filter(user_id=request.user.id, end_date=None).update(end_date=datetime.datetime.now())
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+class CreateResortView(LoginRequiredMixin, CreateView):
+    model = Resorts
 
-
-class ListCompaniesView(LoginRequiredMixin, ListView):
-    model = Companies
-    template_name = 'aplicatie2/companies_index.html'
-
-    # def get_queryset(self):
-    #     if self.request.user.is_superuser is True:
-    #         return self.model.objects.all()
-    #
-    #     return self.model
-
-
-class CreateCompaniesView(LoginRequiredMixin, CreateView):
-    model = Companies
-   # fields = '__all__'
-    form_class = CompaniesForm
-    template_name = 'aplicatie2/companies_form.html'
+    form_class = ResortsForm
+    template_name = 'aplicatie2/resorts_form.html'
 
     def get_form_kwargs(self):
-        variable_to_send = super(CreateCompaniesView, self).get_form_kwargs()
+        variable_to_send = super(CreateResortView, self).get_form_kwargs()
         variable_to_send.update({'pk': None})
         return variable_to_send
 
@@ -53,15 +41,14 @@ class CreateCompaniesView(LoginRequiredMixin, CreateView):
         return reverse('aplicatie2:lista')
 
 
-class UpdateCompaniesView(LoginRequiredMixin, UpdateView):
-    model = Companies
-    # fields = '__all__'
-    form_class = CompaniesForm
+class UpdateResortView(LoginRequiredMixin, UpdateView):
+    model = Resorts
+    form_class = ResortsForm
 
-    template_name = 'aplicatie2/companies_form.html'
+    template_name = 'aplicatie2/resorts_form.html'
 
     def get_form_kwargs(self):
-        variable_to_send = super(UpdateCompaniesView, self).get_form_kwargs()
+        variable_to_send = super(UpdateResortView, self).get_form_kwargs()
         variable_to_send.update({'pk': self.kwargs['pk']})
         return variable_to_send
 
@@ -69,56 +56,84 @@ class UpdateCompaniesView(LoginRequiredMixin, UpdateView):
         return reverse('aplicatie2:lista')
 
 
-class UpdateProfile(LoginRequiredMixin, UpdateView):
-    model = UserExtend
-    form_class = NewAccountForm
-    template_name = 'aplicatie2/companies_form.html'
+class ProfileUpdateView(LoginRequiredMixin, TemplateView):
+    profile_form = ProfileForm
+    template_name = 'aplicatie2/profile.html'
 
-    def get_queryset(self):
-        return self.model.objects.all()
+    def post(self, request, *args, **kwargs):
+        post_data = request.POST or None
 
-    def get_success_url(self):
-        return reverse('aplicatie2:lista')
+        profile_form = ProfileForm(post_data, instance = request.user.profile)
+        if profile_form.is_valid():
+            profile_form.save()
+            return HttpResponseRedirect(reverse_lazy('aplicatie2:lista'))
+        context = self.get_context_data(profile_form = profile_form)
 
-    def get_form_kwargs(self):
-        kwargs = super(UpdateProfile, self).get_form_kwargs()
-        kwargs.update({'current_user': self.request.user.id, 'action': 'update', 'pk': self.kwargs['pk']})
-        return kwargs
+        return self.render_to_response(context)
+
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)
 
 
-punctuation = '!@#$%&*'
 
 
-class NewAccountView(LoginRequiredMixin, CreateView):
-    model = UserExtend
-    template_name = 'aplicatie1/location_form.html'
-    form_class = NewAccountForm
 
-    def get_form_kwargs(self):
-        kwargs = super(NewAccountView, self).get_form_kwargs()
-        kwargs.update({'current_user': self.request.user.id, 'action': 'create', 'pk': None})
-        return kwargs
 
-    def form_valid(self, form):
-        if form.is_valid():
-            form.save(commit = False)
-        return super(NewAccountView, self).form_valid(form)
 
-    def get_success_url(self):
-        psw = ''.join(random.SystemRandom().choice(string.ascii_uppercase +
-                                                   string.ascii_lowercase +
-                                                   string.digits +
-                                                   punctuation) for _ in range(8))
 
-        if User.objects.filter(id = self.object.id).exists():
-            user_instance = User.objects.get(id = self.object.id)
-            user_instance.set_password(psw)
-            user_instance.username = f"{'.'.join(str(user_instance.first_name).split(' '))}.{'.'.join(user_instance.last_name.split(' '))}"
-            user_instance.save()
-            content_email = f"Username si parola : {user_instance.username} {psw}"
-            msg_html = render_to_string('emails/invite_user.html', {'content_email': content_email})
-            msg = EmailMultiAlternatives(subject = 'New account', body = content_email, from_email = 'contact@test.ro', to = [user_instance.email])
-            msg.attach_alternative(msg_html, 'text/html')
-            msg.send()
-        return reverse('aplicatie2:lista')
 
+
+
+# class UpdateProfile(LoginRequiredMixin, UpdateView):
+#     model = UserExtend
+#     form_class = NewAccountForm
+#     template_name = 'aplicatie2/resorts_form.html'
+#
+#     def get_queryset(self):
+#         return self.model.objects.all()
+#
+#     def get_success_url(self):
+#         return reverse('aplicatie2:lista')
+#
+#     def get_form_kwargs(self):
+#         kwargs = super(UpdateProfile, self).get_form_kwargs()
+#         kwargs.update({'current_user': self.request.user.id, 'action': 'update', 'pk': self.kwargs['pk']})
+#         return kwargs
+#
+#
+# punctuation = '!@#$%&*'
+
+
+# class NewAccountView(LoginRequiredMixin, CreateView):
+#     model = UserExtend
+#     template_name = 'aplicatie1/location_form.html'
+#     form_class = NewAccountForm
+#
+#     def get_form_kwargs(self):
+#         kwargs = super(NewAccountView, self).get_form_kwargs()
+#         kwargs.update({'current_user': self.request.user.id, 'action': 'create', 'pk': None})
+#         return kwargs
+#
+#     def form_valid(self, form):
+#         if form.is_valid():
+#             form.save(commit = False)
+#         return super(NewAccountView, self).form_valid(form)
+#
+#     def get_success_url(self):
+#         psw = ''.join(random.SystemRandom().choice(string.ascii_uppercase +
+#                                                    string.ascii_lowercase +
+#                                                    string.digits +
+#                                                    punctuation) for _ in range(8))
+#
+#         if User.objects.filter(id = self.object.id).exists():
+#             user_instance = User.objects.get(id = self.object.id)
+#             user_instance.set_password(psw)
+#             user_instance.username = f"{'.'.join(str(user_instance.first_name).split(' '))}.{'.'.join(user_instance.last_name.split(' '))}"
+#             user_instance.save()
+#             content_email = f"Username si parola : {user_instance.username} {psw}"
+#             msg_html = render_to_string('emails/invite_user.html', {'content_email': content_email})
+#             msg = EmailMultiAlternatives(subject = 'New account', body = content_email, from_email = 'contact@test.ro', to = [user_instance.email])
+#             msg.attach_alternative(msg_html, 'text/html')
+#             msg.send()
+#         return reverse('aplicatie2:lista')
+#

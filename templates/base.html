@@ -1,3 +1,4 @@
+
 <html>
     <head>
         <title>Proiect DJANGO</title>
@@ -5,16 +6,10 @@
     <body>
         <nav>
             <div>
+
                 {% if request.user.is_authenticated %}
-                    <a href="{% url 'aplicatie1:listare' %}">Location</a>
                     <a href="{% url 'aplicatie2:lista' %}">Statiuni</a>
-                    <a href="{% url 'aplicatie2:update_profile' request.user.id %}">User Profile</a>
-                    <a href="{% url 'aplicatie2:adauga_utilizator' %}">New User</a>
-                    {% if ready_to_work is False %}
-                         <a href="{% url 'aplicatie2:oprire_pontaj' %}">Oprire pontaj</a>
-                    {% else %}
-                        <a href="{% url 'aplicatie2:pontaj' %}">Pornire pontaj</a>
-                    {% endif %}
+
                     <a href="{% url 'logout' %}">Logout</a>
                 {% endif %}
             </div>

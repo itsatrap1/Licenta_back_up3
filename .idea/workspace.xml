@@ -1,7 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9a0ccc55-9066-4a44-b5a9-84e5300ce469" name="Default Changelist" comment="" />
+    <list default="true" id="9a0ccc55-9066-4a44-b5a9-84e5300ce469" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/aplicatie2/migrations/0006_alter_companies_company_type.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aplicatie2/migrations/0007_rename_company_type_companies_resort_type.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aplicatie2/migrations/0008_rename_companies_resorts.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aplicatie2/migrations/0009_remove_resorts_website.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aplicatie2/migrations/0010_delete_userextend.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aplicatie2/migrations/0011_delete_pontaj.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aplicatie2/migrations/0012_resorts_user.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aplicatie2/migrations/0013_remove_resorts_user.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aplicatie2/migrations/0014_profile.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aplicatie2/migrations/0015_auto_20220405_1601.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aplicatie2/migrations/0016_delete_profile.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aplicatie2/migrations/0017_profile.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signup/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signup/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signup/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signup/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signup/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signup/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signup/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signup/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/aplicatie2/profile.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/signup/signup.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webscrapping/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webscrapping/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webscrapping/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webscrapping/management/commands/scrapper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webscrapping/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webscrapping/migrations/0002_remove_resorts_people_mover.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webscrapping/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webscrapping/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webscrapping/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webscrapping/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aplicatie1/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/aplicatie1/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aplicatie1/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/aplicatie1/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aplicatie2/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/aplicatie2/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aplicatie2/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/aplicatie2/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aplicatie2/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/aplicatie2/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aplicatie2/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/aplicatie2/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aplicatie2/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/aplicatie2/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aplicatie2/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/aplicatie2/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proiect/context_processors.py" beforeDir="false" afterPath="$PROJECT_DIR$/proiect/context_processors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proiect/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/proiect/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proiect/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/proiect/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/aplicatie1/location_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/aplicatie1/location_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/aplicatie2/companies_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/aplicatie2/resorts_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/aplicatie2/companies_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/aplicatie2/resort_index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/login.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,13 +65,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -53,7 +105,7 @@
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.language" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -113,5 +165,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/../.." />
+    </ignored-roots>
   </component>
 </project>
