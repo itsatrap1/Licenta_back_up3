@@ -1,58 +1,341 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9a0ccc55-9066-4a44-b5a9-84e5300ce469" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/aplicatie2/migrations/0006_alter_companies_company_type.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/aplicatie2/migrations/0007_rename_company_type_companies_resort_type.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/aplicatie2/migrations/0008_rename_companies_resorts.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/aplicatie2/migrations/0009_remove_resorts_website.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/aplicatie2/migrations/0010_delete_userextend.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/aplicatie2/migrations/0011_delete_pontaj.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/aplicatie2/migrations/0012_resorts_user.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/aplicatie2/migrations/0013_remove_resorts_user.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/aplicatie2/migrations/0014_profile.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/aplicatie2/migrations/0015_auto_20220405_1601.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/aplicatie2/migrations/0016_delete_profile.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/aplicatie2/migrations/0017_profile.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/signup/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/signup/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/signup/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/signup/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/signup/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/signup/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/signup/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/signup/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/aplicatie2/profile.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/signup/signup.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webscrapping/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webscrapping/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webscrapping/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webscrapping/management/commands/scrapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webscrapping/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webscrapping/migrations/0002_remove_resorts_people_mover.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webscrapping/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webscrapping/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webscrapping/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webscrapping/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="9a0ccc55-9066-4a44-b5a9-84e5300ce469" name="Default Changelist" comment="V1">
+      <change afterPath="$PROJECT_DIR$/aplicatie2/migrations/0018_delete_profile.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aplicatie2/migrations/0019_delete_resorts.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aplicatie2/migrations/0020_resortuserrating.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aplicatie2/migrations/0021_alter_resortuserrating_table.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collector/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collector/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collector/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collector/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collector/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collector/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collector/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collector/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image100.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image100_12e9hzK.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image101.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image101_S2EWjT4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image101_WFLicW7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image102.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image102_C6lUWf5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image103.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image103_uxngNa5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image104.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image104_47Qjg63.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image105.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image106.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image107.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image108.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image109.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image110.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image111.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image112.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image112_l7jEP1G.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image114.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image115.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image116.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image117.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image118.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image119.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image119_DEFjm0x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image12.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image120.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image121.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image122.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image123.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image124.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image124_Y7lSuyY.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image125.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image126.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image127.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image128.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image129.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image130.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image131.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image132.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image133.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image134.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image135.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image136.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image137.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image138.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image139.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image140.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image141.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image142.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image143.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image144.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image145.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image146.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image147.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image148.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image149.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image15.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image150.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image151.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image152.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image153.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image165.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image166.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image167.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image168.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image169.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image17.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image170.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image171.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image172.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image172_VKogPKX.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image173.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image175.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image176.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image177.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image179.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image18.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image180.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image181.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image182.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image183.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image184.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image185.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image186.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image187.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image188.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image189.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image19.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image190.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image191.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image192.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image193.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image194.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image195.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image196.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image197.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image198.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image198_peh9vNV.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image199.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image20.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image200.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image201.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image202.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image202_UruIiQs.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image204.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image205.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image206.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image207.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image208.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image209.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image21.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image210.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image211.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image213.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image214.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image215.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image216.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image217.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image218.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image219.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image21_mqxa1hn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image22.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image220.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image221.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image222.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image223.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image224.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image225.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image226.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image227.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image228.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image229.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image23.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image230.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image231.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image232.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image233.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image234.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image235.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image236.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image237.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image238.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image239.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image239_oiF3PtI.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image24.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image241.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image242.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image243.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image244.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image245.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image246.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image247.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image248.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image25.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image250.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image251.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image252.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image253.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image254.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image255.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image26.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image27.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image28.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image29.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image2_Tpfar9C.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image2_nBJ9mPw.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image30.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image31.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image34.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image35.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image36.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image38.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image39.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image40.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image41.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image42.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image45.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image47.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image48.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image49.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image50.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image51.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image52.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image53.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image54.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image55.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image56.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image57.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image58.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image59.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image60.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image61.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image62.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image63.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image64.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image65.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image66.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image67.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image68.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image69.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image70.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image71.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image72.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image73.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image74.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image75.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image76.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image77.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image78.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image79.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image80.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image81.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image82.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image83.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image84.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image85.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image86.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image87.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image88.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image89.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image90.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image91.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image92.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image93.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image94.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image94_xe3JrTi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image95.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image96.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image96_tmHdgNC.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image96_wrh0cF8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image97.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image97_O3x0upP.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image98.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image98_LT8jPIN.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image99.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image99_ViQ3Gwa.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/media/images/image99_eV16rVN.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signup/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signup/migrations/0002_delete_additionalinfo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/signup/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ski_user_experience/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ski_user_experience/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ski_user_experience/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ski_user_experience/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ski_user_experience/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ski_user_experience/migrations/0002_additionalinformationmodel_resort_choice.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ski_user_experience/migrations/0003_alter_additionalinformationmodel_table.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ski_user_experience/migrations/0004_alter_additionalinformationmodel_table.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ski_user_experience/migrations/0005_alter_additionalinformationmodel_resort_choice.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ski_user_experience/migrations/0006_additionalinformationmodel_age.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ski_user_experience/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ski_user_experience/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ski_user_experience/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ski_user_experience/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ski_user_experience/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/rating.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/styles/carousel.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/styles/home.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/styles/login/font-awesome.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/styles/login/icon-font.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/styles/login/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/styles/login/util.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/styles/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/styles/navbar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/styles/profile.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/styles/signup/font-awesome.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/styles/signup/icon-font.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/styles/signup/signup.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/styles/ski_user_experience.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/aplicatie2/home.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/aplicatie2/navbar.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/ski_user_experience/additional_info.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/ski_user_experience/search_results.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webscrapping/migrations/0003_resorts_rating.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webscrapping/migrations/0005_resorts_image.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webscrapping/migrations/0006_remove_resorts_image.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webscrapping/migrations/0007_resorts_img.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicatie1/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/aplicatie1/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicatie1/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/aplicatie1/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aplicatie1/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/aplicatie1/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aplicatie2/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/aplicatie2/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aplicatie2/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/aplicatie2/apps.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aplicatie2/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/aplicatie2/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aplicatie2/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/aplicatie2/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aplicatie2/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/aplicatie2/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aplicatie2/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/aplicatie2/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proiect/context_processors.py" beforeDir="false" afterPath="$PROJECT_DIR$/proiect/context_processors.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proiect/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/proiect/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proiect/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/proiect/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/aplicatie1/location_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/aplicatie1/location_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/aplicatie2/companies_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/aplicatie2/resorts_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/aplicatie2/companies_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/aplicatie2/resort_index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/signup/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/signup/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/signup/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/signup/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/signup/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/signup/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/signup/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/signup/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/aplicatie2/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/aplicatie2/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/aplicatie2/resorts_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/aplicatie2/resort_rating.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/emails/invite_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/emails/invite_user.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/registration/password_reset_complete.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/registration/password_reset_confirm.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/registration/password_reset_done.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/registration/password_reset_form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/signup/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/signup/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscrapping/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/webscrapping/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscrapping/management/commands/scrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/webscrapping/management/commands/scrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscrapping/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/webscrapping/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscrapping/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/webscrapping/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +364,33 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/templates/ski_user_experience/search_results.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/templates/aplicatie2/navbar.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/static/styles/login/login.css" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/aplicatie2/forms.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/aplicatie2/models.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/static/styles/main.css" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/static/styles/login/util.css" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/signup/views.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/signup/urls.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/aplicatie2/middleware.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/aplicatie2/apps.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/proiect/settings.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/proiect/urls.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/templates/registration/login.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ski_user_experience/views.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ski_user_experience/forms.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/templates/ski_user_experience/additional_info.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/templates/aplicatie2/home.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/aplicatie2/views.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/PycharmProjects/Licenta/main.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/aplicatie2/urls.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/templates/base.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/templates/aplicatie2/resort_rating.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/templates/aplicatie2/profile.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/static/styles/home.css" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="InvalidFacetManager">
     <ignored-facets>
       <facet id="proiect/invalid/Django" />
@@ -101,14 +411,47 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/Movie-Recommendation-App-master/Movie-Recommendation-App-master" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="configurable.group.language" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\tiberiu.ghimbas\Desktop\Django\proiect\static\styles\signup" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tiberiu.ghimbas\Desktop\Django\proiect\static\styles" />
+      <recent name="C:\Users\tiberiu.ghimbas\Desktop\Django\proiect\proiect\static" />
+      <recent name="C:\Users\tiberiu.ghimbas\Desktop\Django\proiect\media" />
+      <recent name="C:\Users\tiberiu.ghimbas\Desktop\Django\proiect\static\styles\login" />
+      <recent name="C:\Users\tiberiu.ghimbas\Desktop\Django\proiect\static\styles\login\css" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.scrapper">
+    <configuration name="scrapper" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="proiect" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/webscrapping/management/commands" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/webscrapping/management/commands/scrapper.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="proiect" type="Python.DjangoServer" factoryName="Django server">
       <module name="proiect" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -132,6 +475,11 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.scrapper" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -146,10 +494,22 @@
       <workItem from="1638201857075" duration="9667000" />
       <workItem from="1638462365686" duration="17000" />
     </task>
+    <task id="LOCAL-00001" summary="V1">
+      <created>1649586587576</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1649586587576</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.css" />
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.js" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -168,5 +528,7 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/../.." />
     </ignored-roots>
+    <MESSAGE value="V1" />
+    <option name="LAST_COMMIT_MESSAGE" value="V1" />
   </component>
 </project>

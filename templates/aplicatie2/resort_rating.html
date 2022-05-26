@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>Home Page</title>
+            <link rel = 'stylesheet' type = 'text/css' media = 'screen' href = "{% static 'styles/home.css' %}">
+<!--            <link rel = 'stylesheet' type = 'text/css' media = 'screen' href = "{% static 'styles/carousel.css' %}">-->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        </head>
+
+    <body style="background: -webkit-linear-gradient(left, #00bbf9, #c8b6ff);">
+    <h1>Top resorts</h1>
+        <div class = "resorts-grid-view">
+
+        {% for resort in dashboard_resorts %}
+                <div class = "grid-item">
+                            {% if resort.img %}
+                                <img class="card-img-top" src="{{resort.img.url}}"  alt ="Card image cap" height="320px" width="420px">
+                            {% endif %}
+                            <p> <b>{{resort.name|upper}} </b></p>
+                            <span class = "resort_info"> Total lift number: <b>{{resort.resort_lift_number}} </b> </span> <br>
+                            <span class = "resort_info"> Max altitude: <b>{{resort.highest_point}} </b> </span> <br><br>
+                            {% if resort.youth_ticket == "0" %}
+                                <span class = "resort_info"> Price youth: <b>30 euro </b> </span> <br><br>
+                            {% else %}
+                                 <span class = "resort_info"> Price youth: <b>{{resort.youth_ticket}} euro </b> </span> <br><br>
+                            {% endif %}
+
+
+
+
+                            <span>Rate this resort !</span>
+
+                            <form method="post" action = "{% url 'aplicatie2:rating' %}">
+                                {% csrf_token %}
+                                <input type = "hidden" name = "user" value = "{{user.id}}">
+                                <input  type = "hidden" name = "resorts" value = "{{resort.id}}">
+                                <div class="rate">
+							        <input type="radio" name="resort_rating" id ="resort_rating_group{{forloop.counter}}_5" value = "5" required />
+                                    <label for="resort_rating_group{{forloop.counter}}_5" title = "5"></label>
+                                    <input type="radio" name="resort_rating" id ="resort_rating_group{{forloop.counter}}_4" value = "4" required />
+                                    <label for="resort_rating_group{{forloop.counter}}_4" title = "4"></label>
+                                    <input type="radio" name="resort_rating" id ="resort_rating_group{{forloop.counter}}_3" value = "3" required />
+                                    <label for="resort_rating_group{{forloop.counter}}_3" title = "3"></label>
+                                    <input type="radio" name="resort_rating" id ="resort_rating_group{{forloop.counter}}_2" value = "2" required />
+                                    <label for="resort_rating_group{{forloop.counter}}_2" title = "2"></label>
+                                    <input type="radio" name="resort_rating" id ="resort_rating_group{{forloop.counter}}_1" value = "1" required />
+                                    <label for="resort_rating_group{{forloop.counter}}_1" title = "1"></label>
+						        </div>
+                                <br>
+                                <input type = "submit" class = "btn btn-primary" value = "submit">
+                                {{form.errors}}
+                            </form>
+                        </div>
+        {% endfor %}
+
+        </div>
+        {% if resorts_prices_filtered_by_age %}
+            <h1>Prices convenient for you by age </h1>
+        <br>
+            <div class = "resorts-grid-view">
+
+                {% for resort in resorts_prices_filtered_by_age %}
+                        <div class = "grid-item">
+                            {% if resort.img %}
+                                <img class="card-img-top" src="{{resort.img.url}}"  alt ="Card image cap" height="300px" width="380px">
+                            {% endif %}
+                            <p> <b>{{resort.name|upper}} </b></p>
+                            <span class = "resort_info"> Total lift number: <b>{{resort.resort_lift_number}} </b> </span> <br>
+                            <span class = "resort_info"> Max altitude: <b>{{resort.highest_point}} </b> </span> <br><br>
+                            {% if resort.youth_ticket == "0" %}
+                                <span class = "resort_info"> Price youth: <b>30 euro </b> </span> <br><br>
+                            {% else %}
+                                 <span class = "resort_info"> Price youth: <b>{{resort.youth_ticket}} euro </b> </span> <br><br>
+                            {% endif %}
+                            <span>Rate this resort !</span>
+
+                            <form method="post" action = "{% url 'aplicatie2:rating' %}">
+                                {% csrf_token %}
+                                <input type = "hidden" name = "user" value = "{{user.id}}">
+                                <input  type = "hidden" name = "resorts" value = "{{resort.id}}">
+                                <div class="rate">
+							        <input type="radio" name="resort_rating" id ="resort_rating_group{{forloop.counter}}_55" value = "5" required />
+                                    <label for="resort_rating_group{{forloop.counter}}_55" title = "5"></label>
+                                    <input type="radio" name="resort_rating" id ="resort_rating_group{{forloop.counter}}_44" value = "4" required />
+                                    <label for="resort_rating_group{{forloop.counter}}_44" title = "4"></label>
+                                    <input type="radio" name="resort_rating" id ="resort_rating_group{{forloop.counter}}_33" value = "3" required />
+                                    <label for="resort_rating_group{{forloop.counter}}_33" title = "3"></label>
+                                    <input type="radio" name="resort_rating" id ="resort_rating_group{{forloop.counter}}_22" value = "2" required />
+                                    <label for="resort_rating_group{{forloop.counter}}_22" title = "2"></label>
+                                    <input type="radio" name="resort_rating" id ="resort_rating_group{{forloop.counter}}_11" value = "1" required />
+                                    <label for="resort_rating_group{{forloop.counter}}_11" title = "1"></label>
+						        </div>
+                                <br>
+                                <input type = "submit" class = "btn btn-primary" value = "submit">
+                                {{form.errors}}
+                            </form>
+                        </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </body>
+<!--    <script src = "{% static 'js/rating.js' %}"></script>-->
+</html>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--    <form method="POST">-->
+<!--        {% csrf_token %}-->
+<!--        {% for item in form %}-->
+<!--            {{ item.label }} {{ item }}<br>-->
+
+<!--        {{ item.errors }}-->
+<!--        {% endfor %}-->
+<!--    <button type="submit">Save</button>-->
+<!--    </form>-->

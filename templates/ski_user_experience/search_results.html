@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% block content %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+      <form method = "Post">
+          {% csrf_token %}
+          {% for el in object_list %}
+               <input type = "checkbox" id = "resorts1" name = "resorts" value = "a">
+                <label for = "resorts1"> {{el.name}} </label>
+                <br>
+          {% endfor %}
+          <button type="submit">Submit</button>
+      </form>
+    </body>
+</html>
+
+{% endblock %}

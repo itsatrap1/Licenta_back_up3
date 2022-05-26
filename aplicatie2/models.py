@@ -4,8 +4,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-
-# Create your models here.
+from webscrapping.models import Resorts
 
 
 class Logs(models.Model):
@@ -20,65 +19,17 @@ class Logs(models.Model):
     url = models.CharField('URL', max_length=100)
 
 
-class Resorts(models.Model):
-    objects = None
-    resort_choices = (('Beginner', 'BEGINNER'),
-                      ('Intermediate', 'INTERMEDIATE'),
-                      ('Expert', 'EXPERT'))
+class ResortUserRating(models.Model):
+    objects = models.Manager()
+    user = models.ForeignKey(User, on_delete = models.CASCADE, default = None)
+    resorts = models.ForeignKey(Resorts, on_delete = models.CASCADE)
+    resort_rating = models.CharField(max_length = 10)
+    rated_date = models.DateTimeField(auto_now_add = True)
 
-    name = models.CharField(max_length=100)
-    resort_type = models.CharField(max_length=20, choices=resort_choices)
-    location = models.ForeignKey(Location, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"{self.resort_type} {self.name}"
-
-
-class Profile(models.Model):
-    skill_choices = (('Beginner', 'BEGINNER'),
-                     ('Intermediate', 'INTERMEDIATE'),
-                     ('Expert', 'EXPERT'))
-
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    location = models.CharField(max_length=30, blank=True)
-    assumed_technical_ski_level = models.CharField(max_length=30, choices=skill_choices)
-    years_of_experience = models.IntegerField(blank=True)
-    money_to_spend = models.IntegerField(blank=True)
-
-    @receiver(post_save, sender=user)
-    def create_user_profile(sender, instance, created, **kwargs):
-        if created:
-            Profile.objects.create(user=instance)
-
-    @receiver(post_save, sender=user)
-    def save_user_profile(sender, instance, **kwargs):
-        instance.profile.save()
+    class Meta:
+        db_table = 'user_rating'
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# class UserExtend(User):
-#
-#     user_resorts = models.ForeignKey(Resorts, on_delete = models.CASCADE)
-#
-#     def __str__(self):
-#         return f"{self.first_name} {self.last_name} {self.user_resorts.name}"
 
 

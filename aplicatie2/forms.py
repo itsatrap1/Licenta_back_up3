@@ -1,32 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
-from django.forms import ModelChoiceField
-
-from aplicatie2.models import Resorts, Profile  # , Profile  # , UserExtend
-
-
-class ResortsForm(forms.ModelForm):
-
-    class Meta:
-
-        model = Resorts
-        fields = '__all__'
-
-    def __init__(self, pk,  *args, **kwargs):
-        super(ResortsForm, self).__init__(*args, **kwargs)
-        self.company_pk = pk
-
-    def clean(self):
-        cleaned_data = self.cleaned_data
-        name_value = cleaned_data.get('name')
-        if self.company_pk:
-            if Resorts.objects.filter(name = name_value).exclude(id = self.company_pk).exists():
-                self._errors['name'] = self.error_class(['Numele deja exista'])
-        else:
-            if Resorts.objects.filter(name = name_value).exists():
-                self._errors['name'] = self.error_class(['Numele deja exista'])
-
-        return cleaned_data
+from aplicatie2.models import ResortUserRating
+from webscrapping.models import Resorts
 
 
 class UserForm(forms.ModelForm):
@@ -35,33 +10,50 @@ class UserForm(forms.ModelForm):
         fields = ('first_name', 'last_name', 'email')
 
 
-class ProfileForm(forms.ModelForm):
+class AddRatingForm(forms.ModelForm):
     class Meta:
-        model = Profile
-        fields = ['location',
-                  'assumed_technical_ski_level',
-                  'years_of_experience',
-                  'money_to_spend']
+        # CHOICES = [('1', '1'),
+        #            ('2', '2'),
+        #            ('3', '3'),
+        #            ('4', '4'),
+        #            ('5', '5')]
+        model = ResortUserRating
+        fields = '__all__'
 
+        widgets = {
+            'resort_rating': forms.RadioSelect()
+        }
 
+    def __init__(self, pk,  *args, **kwargs):
+        super(AddRatingForm, self).__init__(*args, **kwargs)
+        self.pk = pk
+        self.fields['user'].initial = self.pk
 
+    def clean(self):
+        return self.cleaned_data
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# class ResortsForm(forms.ModelForm):
+#
+#     class Meta:
+#
+#         model = Resorts
+#         fields = '__all__'
+#
+#     def __init__(self, pk,  *args, **kwargs):
+#         super(ResortsForm, self).__init__(*args, **kwargs)
+#         self.resort_pk = pk
+#
+#     def clean(self):
+#         cleaned_data = self.cleaned_data
+#         name_value = cleaned_data.get('name')
+#         if self.company_pk:
+#             if Resorts.objects.filter(name = name_value).exclude(id = self.resort_pk).exists():
+#                 self._errors['name'] = self.error_class(['Numele deja exista'])
+#         else:
+#             if Resorts.objects.filter(name = name_value).exists():
+#                 self._errors['name'] = self.error_class(['Numele deja exista'])
+#
+#         return cleaned_data
 
 
 # class NewAccountForm(forms.ModelForm):

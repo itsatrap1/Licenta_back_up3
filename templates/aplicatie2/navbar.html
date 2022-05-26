@@ -1,0 +1,28 @@
+<nav class="navbar navbar-dark bg-dark">
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      {% if  request.user.is_authenticated %}
+        <li class = "nav-item">
+            <a class="navbar-link" href="{% url 'aplicatie2:home' %}">Resort Recommender</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'aplicatie2:home' %}">Home</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="{% url 'aplicatie2:rating' %}">Rate</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="{% url 'aplicatie2:profile' %}">Profile</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+
+<nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-success">
+
+</nav>

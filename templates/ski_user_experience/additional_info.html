@@ -1,0 +1,93 @@
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+<head xmlns="http://www.w3.org/1999/html">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {{form.media.css}}
+    <style>input, select {width: 100%}</style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel = 'stylesheet' type = 'text/css' media = 'screen' href = "{% static 'styles//ski_user_experience.css' %}">
+</head>
+
+<body>
+    <br>
+    <div class = "limiter">
+        <div class = "container-login100" >
+
+            <div class = "wrap-login100 p-t-40 p-b-50">
+
+                <span class = "login100-form-title p-b-41">
+                    Additional Info
+                </span>
+                <form class = "login100-form validate-form p-b-33 p-t-5" method = "post">
+                    {% csrf_token %}
+
+                    <p>  {{form.user|as_crispy_field}}  </p>
+
+                    <div class = "wrap-input100 validate-input">
+                        What is your age ?
+                        <br>
+                        <input class = "login100-form" type = "number" name = "age" placeholder = "Age">
+                        <span class = "focus-input100" ></span>
+                    </div>
+
+                    <div class = "wrap-input100 validate-input">
+                        What country do you live in ?
+                        <br>
+                        <input class = "login100-form" type = "text" name = "country" placeholder = "Country">
+                        <span class = "focus-input100" ></span>
+                    </div>
+
+                    <div class = "wrap-input100 validate-input">
+                        What city do you live in ?
+                        <br>
+                        <input class = "login100-form" type = "text" name = "city" placeholder = "City">
+                        <span class ="focus-input100" ></span>
+                    </div>
+
+                    <div class = "wrap-input100 validate-input">
+                        <li> How would you rank yourself as a skier ? {{form.assumed_technical_ski_level|as_crispy_field}} </li>
+                    </div>
+
+                    <div class = "wrap-input100 validate-input">
+                        How many years of ski experience do you have ?
+                        <br>
+                        <input class = "login100-form" type = "number" name = "years_of_experience" placeholder = "Years of skiing">
+                        <span class = "focus-input100" ></span>
+                    </div>
+
+                    <div class = "wrap-input100 validate-input">
+                        How much ar you willing to spend ?
+                        <br>
+                        <input class = "login100-form" type = "number" name = "money_to_spend" placeholder = "Value">
+                        <span class = "focus-input100" ></span>
+                    </div>
+
+                    <div class = "wrap-input100 validate-input">
+                        <li class = "login100-form" > Resorts you have been on ? {{form.resort_choice}} </li>
+                        <span class = "focus-input100"></span>
+
+                    </div>
+
+                    <div class = "container-login100-form-btn m-t-32">
+                        <button class = "login100-form-btn" type="submit" onclick = "{% url 'login' %}">Submit</button>
+                    </div>
+                    {{form.errors}}
+                </form>
+                <script src ="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                {{form.media.js}}
+                {{form.non_field_errors}}
+                <br>
+            </div>
+        </div>
+    </div>
+</body>
+
+{% endblock %}
+
+
+
