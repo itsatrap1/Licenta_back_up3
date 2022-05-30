@@ -1,5 +1,7 @@
 import random
 from math import sqrt, ceil
+import os
+import sqlite3 as sq3
 
 import numpy as np
 import pandas as pd
@@ -19,6 +21,7 @@ from aplicatie2.forms import AddRatingForm
 from aplicatie2.models import ResortUserRating
 from ski_user_experience.models import AdditionalInformationModel
 from webscrapping.models import Resorts
+from .filters import ResortFilter
 
 
 class HomeView(LoginRequiredMixin, ListView):
@@ -29,10 +32,7 @@ class HomeView(LoginRequiredMixin, ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
         context['visited_resorts'] = AdditionalInformationModel.objects.filter(user=self.request.user)
-        context['high_rated_resorts'] = Resorts.objects.filter(rating__gte=4.6)
-
-        img_url = Resorts.objects.values('img')
-        image_url_list = [el['img'] for el in img_url]
+        context['high_rated_resorts'] = Resorts.objects.filter(rating__gte=4.6)[:5]
 
         resorts = Resorts.objects.all()
         resort_ratings = ResortUserRating.objects.all()
@@ -46,14 +46,9 @@ class HomeView(LoginRequiredMixin, ListView):
         # RESORTS DATA FRAME
 
         for i, resort in enumerate(resorts):
-            if resort.img.url == 'None':
-                resort_features = [resort.id, resort.name, resort.lowest_point, resort.highest_point,
-                                   resort.easy, resort.intermediate, resort.difficult, resort.resort_lift_number,
-                                   "/media/media/images/image10.png"]
-            else:
-                resort_features = [resort.id, resort.name, resort.lowest_point, resort.highest_point,
-                                   resort.easy, resort.intermediate, resort.difficult, resort.resort_lift_number,
-                                   resort.img.url]
+            resort_features = [resort.id, resort.name, resort.lowest_point, resort.highest_point,
+                               resort.easy, resort.intermediate, resort.difficult, resort.resort_lift_number,
+                               resort.img.url]
 
             all_resorts_features += [resort_features]
 
@@ -61,14 +56,14 @@ class HomeView(LoginRequiredMixin, ListView):
                                           columns=['resort_id', 'resort_name', 'resort.lowest_point',
                                                    'resort.highest_point', 'resort.easy',
                                                    'resort.intermediate', 'resort.difficult',
-                                                   'lift_number', 'images'])
-        print('Resort DataFrame')
-        print()
-        print(resorts_data_frame)
-        print(resorts_data_frame.dtypes)
-
-        # RATING DATA FRAME
-        print(resort_ratings)
+                                                   'lift_number', 'image'])
+        # print('Resort DataFrame')
+        # print()
+        # print(resorts_data_frame)
+        # print(resorts_data_frame.dtypes)
+        #
+        # # RATING DATA FRAME
+        # print(resort_ratings)
 
         for rating in resort_ratings:
             resorts_user_ratings = [rating.user.id, rating.resorts.id, rating.resort_rating]
@@ -79,8 +74,8 @@ class HomeView(LoginRequiredMixin, ListView):
         ratings_data_frame['resort_id'] = ratings_data_frame['resort_id'].astype(str).astype(np.int64)
         ratings_data_frame['rating'] = ratings_data_frame['rating'].astype(str).astype(np.float)
 
-        print(ratings_data_frame)
-        print(ratings_data_frame.dtypes)
+        # print(ratings_data_frame)
+        # print(ratings_data_frame.dtypes)
 
         if self.request.user.is_authenticated:
             user_id = self.request.user.id
@@ -94,9 +89,9 @@ class HomeView(LoginRequiredMixin, ListView):
                     all_user_input_list += [user_input_list]
 
             input_resorts = pd.DataFrame(all_user_input_list, columns=['resort_name', 'rating'])
-            print("Rated resorts by user Data Frame")
+            # print("Rated resorts by user Data Frame")
             input_resorts['rating'] = input_resorts['rating'].astype(str).astype(np.int64)
-            print(input_resorts.dtypes)
+            # print(input_resorts.dtypes)
 
             # FILTERING OUT RESORTS BY NAME
 
@@ -107,12 +102,12 @@ class HomeView(LoginRequiredMixin, ListView):
 
             input_Resorts = pd.merge(input_resorts_id, input_resorts)
 
-            print(input_Resorts)
+            # print(input_Resorts)
 
             user_subset = ratings_data_frame[ratings_data_frame['resort_id'].isin(input_Resorts['resort_id'].tolist())]
             user_subset_group = user_subset.groupby(['user_id'])
             user_subset_group = sorted(user_subset_group, key=lambda x: len(x[1]), reverse=True)
-            print(user_subset_group[0:])
+            # print(user_subset_group[0:])
 
             user_subset_group = user_subset_group[0:]
 
@@ -144,28 +139,28 @@ class HomeView(LoginRequiredMixin, ListView):
                 else:
                     pearson_correlation_dictionary[name] = 0
 
-                print(pearson_correlation_dictionary.items())
+                # print(pearson_correlation_dictionary.items())
 
                 pearson_data_frame = pd.DataFrame.from_dict(pearson_correlation_dictionary, orient='index')
                 pearson_data_frame.columns = ['similarity_index']
                 pearson_data_frame['user_id'] = pearson_data_frame.index
                 pearson_data_frame.index = range(len(pearson_data_frame))
-                print(pearson_data_frame.head())
+                # print(pearson_data_frame.head())
 
                 top_users = pearson_data_frame.sort_values(by='similarity_index', ascending=False)[0:]
-                print(top_users.head())
+                # print(top_users.head())
 
                 top_users_rating = top_users.merge(ratings_data_frame,
                                                    left_on='user_id',
                                                    right_on='user_id',
                                                    how='inner')
-                print(top_users_rating.head())
+                # print(top_users_rating.head())
 
                 # MULTIPLY THE SIMILARITY BY USER RATINGS
 
                 top_users_rating['weighted_rating'] = top_users_rating['similarity_index'] * top_users_rating['rating']
 
-                print(top_users_rating.head())
+                # print(top_users_rating.head())
 
                 # APPLIES A SUM TO THE TOP USERS AFTER GROUPING IT UP BY USER ID
 
@@ -193,7 +188,6 @@ class HomeView(LoginRequiredMixin, ListView):
                 print(recommender)
                 recommender.rename(columns={'resort.highest_point': 'highest_point'}, inplace=True)
                 recommender.rename(columns={'resort.lowest_point': 'lowest_point'}, inplace=True)
-                print(recommender)
                 context['recommender'] = recommender.to_dict('records')
 
         return context
@@ -202,6 +196,13 @@ class HomeView(LoginRequiredMixin, ListView):
 class ProfileView(LoginRequiredMixin, ListView):
     model = AdditionalInformationModel
     template_name = 'aplicatie2/profile.html'
+    form_class = AddRatingForm
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(ProfileView, self).get_context_data(**kwargs)
+        context['rated_resorts'] = ResortUserRating.objects.filter(user=self.request.user)
+
+        return context
 
     def get_queryset(self):
         return AdditionalInformationModel.objects.filter(user=self.request.user)
@@ -212,6 +213,7 @@ class AddRatingView(CreateView):
     template_name = 'aplicatie2/resort_rating.html'
     form_class = AddRatingForm
 
+
     def get_form_kwargs(self):
         variable_to_send = super(AddRatingView, self).get_form_kwargs()
         variable_to_send.update({'pk': self.request.user.id})
@@ -219,8 +221,14 @@ class AddRatingView(CreateView):
         return variable_to_send
 
     def get_context_data(self, **kwargs):
-        context = super(AddRatingView, self).get_context_data(**kwargs)
 
+        context = super(AddRatingView, self).get_context_data(**kwargs)
+        # FILTER
+        rr = Resorts.objects.filter(rating__gte = "3.0")
+        filter_2 = ResortFilter(self.request.GET, queryset = rr)
+        rr = filter_2.qs
+        context["filter"] = filter_2
+        context["q_set"] = rr
         # Already rated resorts
         rated_resorts = ResortUserRating.objects.filter(user=self.request.user)
         rated_resorts_ids = list(rated_resorts.values_list('resorts_id', flat=True))
@@ -239,17 +247,17 @@ class AddRatingView(CreateView):
                     context['resorts_prices_filtered_by_age'] = Resorts.objects.filter(rating__gte="3.0").order_by(
                         'adult_ticket').exclude(id__in=rated_resorts_ids)[:4]
 
-        context['dashboard_resorts'] = Resorts.objects.filter(rating__gte="4.0").exclude(id__in=rated_resorts_ids)[:4]
-        # filtered_resorts = Resorts.objects.filter(rating__gte = "4.0").exclude(id__in = rated_resorts_ids)[:6]
-        # n = len(filtered_resorts)
-        # nSlides = n // 4 + ceil((n/4) - (n//4))
-        # allRes = [[filtered_resorts, range(1, n), nSlides]]
-        # context['dashboard_resorts'] = filtered_resorts
+        context['dashboard_resorts'] = Resorts.objects.filter(rating__gte="4.0").exclude(id__in=rated_resorts_ids)[:6]
 
         return context
 
     def get_success_url(self):
         return reverse('aplicatie2:rating')
+
+
+class ResortFilterView(CreateView):
+    model = Resorts
+    template_name = 'aplicatie2/resort_rating.html'
 
 #
 # class CreateResortView(LoginRequiredMixin, CreateView):

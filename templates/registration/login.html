@@ -8,9 +8,9 @@
 		<title>Login </title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="{% static 'styles/login/font-awesome.min.css' %}">
+<!--		<link rel="stylesheet" type="text/css" href="{% static 'styles/login/font-awesome.css' %}">-->
 		<link rel="stylesheet" type="text/css" href="{% static 'styles/login/icon-font.min.css' %}">
-<!--		<link rel="stylesheet" type="text/css" href="{% static 'styles/login/util.css' %}">-->
+		<link rel="stylesheet" type="text/css" href="{% static 'styles/login/material-design-iconic-font.min.css' %}">
 		<link rel = 'stylesheet' type = 'text/css' media = 'screen' href = "{% static 'styles/login/login.css' %}">
 		{{form.media.css}}
 	</head>
@@ -44,8 +44,8 @@
 					</form>
 					<br>
 					<div class = "container-signup-button">
-						<label><b> Don't have an account ? </b></label>
-						<a class = "signup-button" href = "{% url 'signup:signup' %}"><b> Sign Up </b></a>
+						<label style = "color: white;"><b> Don't have an account ? </b></label>
+						<button class = "sign-up-button" type = "submit" onclick = "location.href='{% url 'signup:signup' %}'"><b> Register </b></button>
 					</div>
 				</div>
 			</div>

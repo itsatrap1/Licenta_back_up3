@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block content %}
 {% load static %}
 
@@ -6,31 +7,48 @@
         <head>
             <meta charset="UTF-8">
             <title>Home Page</title>
-            <link rel = 'stylesheet' type = 'text/css' media = 'screen' href = "{% static 'styles/home.css' %}">
-<!--            <link rel = 'stylesheet' type = 'text/css' media = 'screen' href = "{% static 'styles/carousel.css' %}">-->
+            <link rel = 'stylesheet' type = 'text/css' media = 'screen' href = "{% static 'styles/rating.css' %}">
+            <link rel = 'stylesheet' type = 'text/css' media = 'screen' href = "{% static 'styles/owl.carousel.min.css' %}">
+            <link rel = 'stylesheet' type = 'text/css' media = 'screen' href = "{% static 'styles/owl.theme.default.min.css' %}">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
         </head>
 
     <body style="background: -webkit-linear-gradient(left, #00bbf9, #c8b6ff);">
+    <div class = "search-box">
+        <form method = "get">
+          <span class = "search-bar"> Name:     {{filter.form.name}} </span>
+            <span class = "search-bar">Rating:  {{filter.form.rating}} </span>
+            <button class = "btn btn-primary" type = "submit">Search</button>
+        </form>
+
+    </div>
+    {% if q_set|length == 728 %}
+    {% else %}
+        {% for el in q_set.all %}
+            <p>{{el.id}}</p>
+        {% endfor %}
+    {% endif %}
+    <br>
     <h1>Top resorts</h1>
+
         <div class = "resorts-grid-view">
 
         {% for resort in dashboard_resorts %}
                 <div class = "grid-item">
                             {% if resort.img %}
-                                <img class="card-img-top" src="{{resort.img.url}}"  alt ="Card image cap" height="320px" width="420px">
+                                <img class="card-img-top" src="{{resort.img.url}}"  alt ="Card image cap" height="320px" width="420px" style = "border-radius: 8%;" >
                             {% endif %}
                             <p> <b>{{resort.name|upper}} </b></p>
                             <span class = "resort_info"> Total lift number: <b>{{resort.resort_lift_number}} </b> </span> <br>
-                            <span class = "resort_info"> Max altitude: <b>{{resort.highest_point}} </b> </span> <br><br>
+                            <span class = "resort_info"> Max altitude: <b>{{resort.highest_point}} </b> </span> <br>
                             {% if resort.youth_ticket == "0" %}
                                 <span class = "resort_info"> Price youth: <b>30 euro </b> </span> <br><br>
                             {% else %}
-                                 <span class = "resort_info"> Price youth: <b>{{resort.youth_ticket}} euro </b> </span> <br><br>
+                                 <span class = "resort_info"> Price youth: <b>{{resort.youth_ticket}} euro </b> </span> <br>
+
                             {% endif %}
-
-
-
 
                             <span>Rate this resort !</span>
 
@@ -50,7 +68,7 @@
                                     <input type="radio" name="resort_rating" id ="resort_rating_group{{forloop.counter}}_1" value = "1" required />
                                     <label for="resort_rating_group{{forloop.counter}}_1" title = "1"></label>
 						        </div>
-                                <br>
+
                                 <input type = "submit" class = "btn btn-primary" value = "submit">
                                 {{form.errors}}
                             </form>
@@ -62,19 +80,18 @@
             <h1>Prices convenient for you by age </h1>
         <br>
             <div class = "resorts-grid-view">
-
                 {% for resort in resorts_prices_filtered_by_age %}
                         <div class = "grid-item">
                             {% if resort.img %}
-                                <img class="card-img-top" src="{{resort.img.url}}"  alt ="Card image cap" height="300px" width="380px">
+                                <img class="card-img-top" src="{{resort.img.url}}"  alt ="Card image cap" height="320px" width="420px" style = "border-radius: 8%;">
                             {% endif %}
                             <p> <b>{{resort.name|upper}} </b></p>
                             <span class = "resort_info"> Total lift number: <b>{{resort.resort_lift_number}} </b> </span> <br>
-                            <span class = "resort_info"> Max altitude: <b>{{resort.highest_point}} </b> </span> <br><br>
+                            <span class = "resort_info"> Max altitude: <b>{{resort.highest_point}} </b> </span> <br>
                             {% if resort.youth_ticket == "0" %}
-                                <span class = "resort_info"> Price youth: <b>30 euro </b> </span> <br><br>
+                                <span class = "resort_info"> Price youth: <b>30 euro </b> </span> <br>
                             {% else %}
-                                 <span class = "resort_info"> Price youth: <b>{{resort.youth_ticket}} euro </b> </span> <br><br>
+                                 <span class = "resort_info"> Price youth: <b>{{resort.youth_ticket}} euro </b> </span> <br>
                             {% endif %}
                             <span>Rate this resort !</span>
 
@@ -102,15 +119,22 @@
                 {% endfor %}
             </div>
         {% endif %}
+
     </body>
+        <footer>
+            <script src = "{% static 'styles/jquery 3.6.js' %}"></script>
+            <script src = "{% static 'styles/owl.carousel.min.js' %}"></script>
+        </footer>
 <!--    <script src = "{% static 'js/rating.js' %}"></script>-->
 </html>
 
 {% endblock %}
 
-
-
-
+{% block scripts %}
+    $(document).ready(function(){
+        $(".owl-carousel").owlCarousel();
+    });
+{% endblock scripts %}
 
 
 

@@ -12,11 +12,7 @@ class UserForm(forms.ModelForm):
 
 class AddRatingForm(forms.ModelForm):
     class Meta:
-        # CHOICES = [('1', '1'),
-        #            ('2', '2'),
-        #            ('3', '3'),
-        #            ('4', '4'),
-        #            ('5', '5')]
+
         model = ResortUserRating
         fields = '__all__'
 

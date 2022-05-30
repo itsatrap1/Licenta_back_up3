@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'ski_user_experience',
     'signup',
     'django_select2',
+    'django_filters',
 ]
 
 MIDDLEWARE = [

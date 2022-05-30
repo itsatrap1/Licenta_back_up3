@@ -4,21 +4,24 @@ ul {
   padding: 0;
   overflow: hidden;
   background-color: #333;
+
 }
 
 li {
-  float: left;
+  float: right;
+  display: inline-block;
+
 }
 
 li a {
-  display: block;
+  font: Calibri;
   color: white;
   text-align: center;
-  padding: 20px 25px;
+  padding: 5px 25px;
   text-decoration: none;
 }
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
-  background-color: #111;
+  background-color: #555;
 }

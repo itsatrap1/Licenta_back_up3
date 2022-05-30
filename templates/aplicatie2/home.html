@@ -6,21 +6,19 @@
             <meta charset="UTF-8">
             <title>Home Page</title>
             <link rel = 'stylesheet' type = 'text/css' media = 'screen' href = "{% static 'styles/home.css' %}">
-
         </head>
-        <body>
-        <h3>Your Recommendations :</h3>
+        <body style="background: -webkit-linear-gradient(left, #00bbf9, #c8b6ff);">
+        <h1>Your Recommendations :</h1>
          <div class = "resorts-grid-view">
              {% if recommender %}
                 {% for rec in recommender %}
                     <div class = "grid-item">
-
-                        <img class="card-img-top" src="{{rec.img.url}}"  alt ="Card image cap" height="320px" width="420px">
-
-                       <b>{{rec.resort_name|upper}}</b>
-                        <p> Lifts total number:  {{rec.lift_number}}</p>
-                        <p>{{rec.highest_point}}</p>
-                        <p>{{rec.resort_id}}</p>
+                        <img class="card-img-top" src = "{{rec.image}}"  alt ="Card image cap" height="320px" width="420px" style = "border-radius: 8%;">
+                        <br>
+                        <span class = "resort_info">{{rec.resort_name|upper}}</span><br>
+                        <span class = "resort_info"> Lifts total number:  {{rec.lift_number}}</span><br>
+                        <span class = "resort_info">{{rec.highest_point}}</span><br>
+                        <span class = "resort_info">{{rec.resort_id}}</span>
                     </div>
                         <br>
                 {% endfor %}
@@ -29,31 +27,27 @@
         </div>
         <br>
         <br>
-<!--        <div>-->
-<!--            <p>You have visited this resorts:</p>-->
-<!--            {% for el in visited_resorts %}-->
-<!--                {% for els in el.resort_choice.all %}-->
-<!--                    <li> {{els.name|title}} </li>-->
-<!--                {% endfor %}-->
-<!--            {% endfor %}-->
-<!--        </div>-->
             <br>
             <br>
-            <div class = "resorts-grid-view">
+        <h1> Hot Resorts </h1>
+<!--            <div class = "resorts-grid-view">-->
+        <div class = "container">
+             <div class = "row justify-content-start">
                 {% for resort in high_rated_resorts %}
-                <div class = "grid-item">
+                <div class = "col-3">
                             {% if resort.img %}
-                                <img class="card-img-top" src="{{resort.img.url}}"  alt ="Card image cap" height="300px" width="380px">
+                                <img class="card-img-top" src="{{resort.img.url}}"  alt ="Card image cap" height="320px" width="420px" style = "border-radius: 8%;">
                             {% endif %}
                        <p> <b>{{resort.name|upper}} </b></p>
                        <p> <b>{{resort.id|upper}} </b></p>
                        <p> <b>{{resort.highest_point|upper}} </b></p>
+<!--                     <span>Rate this resort !</span>-->
 
                 </div>
                     <br>
                 {% endfor %}
             </div>
-
+            </div>
         </body>
     </html>
 
